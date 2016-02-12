@@ -1,3 +1,9 @@
+using Business;
+using Business.Interfaces;
+using Data;
+using Data.Repositories;
+using Models.Interfaces;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Testing.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Testing.App_Start.NinjectWebCommon), "Stop")]
 
@@ -61,6 +67,11 @@ namespace Testing.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+            kernel.Bind<TestingContext>().ToSelf().InRequestScope();
+            kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
+
+            kernel.Bind<ICustomerManager>().To<CustomerManager>();
+
+        }
     }
 }
