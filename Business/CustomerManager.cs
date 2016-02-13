@@ -33,11 +33,13 @@ namespace Business
         public void AddNewCustomer(Customer customerToAdd)
         {
             _customerRepository.Add(customerToAdd);
+            _customerRepository.SaveChanges();
         }
 
         public void DeleteCustomer(Customer customerToDelete)
         {
             _customerRepository.Delete(customerToDelete);
+            _customerRepository.SaveChanges();
         }
 
         public void UpdateCustomer(Customer customerToUpdate)

@@ -15,6 +15,13 @@ namespace Data
                 DateOfBirth = Convert.ToDateTime("12/22/1968")
             });
 
+            context.Customers.Add(new Customer
+            {
+                FirstName = "Underage",
+                LastName = "Customer",
+                DateOfBirth = Convert.ToDateTime("12/22/2000")
+            });
+
             context.SaveChanges();
         }
     }

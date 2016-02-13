@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using Business.Interfaces;
+using Models;
+using Testing.ViewModels;
 
 namespace Testing.Controllers
 {
@@ -18,8 +21,14 @@ namespace Testing.Controllers
 
         public ActionResult Index()
         {
-            var xxx = _customerManager.GetAllCustomers();
-            return View();
+            var customerViewModels = GetViewModelsForAllCustomers();
+            return View(customerViewModels);
+        }
+
+        private IEnumerable<CustomerViewModel> GetViewModelsForAllCustomers()
+        {
+            var allCustomers = _customerManager.GetAllCustomers();
+            return allCustomers.Select(customer => new CustomerViewModel(customer)).ToList();
         }
 
         public ActionResult About()
