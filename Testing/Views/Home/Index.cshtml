@@ -1,31 +1,72 @@
-﻿@{
+﻿@model IEnumerable<Testing.ViewModels.CustomerViewModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
+<script src="~/Scripts/jquery-2.2.0.min.js"></script>
+<script src="~/Scripts/Custom/customerManager.js"></script>
 
 <div class="jumbotron">
     <h1>Testing</h1>
-    <p class="lead">This is a very simple demonstration on how testing can be done, soup to nuts, using Nunit and Selenium.  Nunit test the soup (backend) and Selenium tests the nuts (frontend)</p>
+    <p class="lead">This is a VERY simple demonstration on how testing can be done, soup to nuts, using Nunit and Selenium.  Nunit test the soup (backend) and Selenium tests the nuts (frontend)</p>
     <p><a href="http://seleniumhq.org" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <h2>Customers</h2>
+        <table id="customerDisplayTable">
+            <tr>
+                <td><strong>Name</strong></td>
+                <td style="padding-left: 10px;"><strong>Date Of Birth</strong></td>
+            </tr>
+            @foreach (var customer in Model)
+            {
+                <tr id=@customer.CustomerId onclick="setUpdateFields(@customer.CustomerId, '@customer.FirstName', '@customer.LastName', '@customer.DateOfBirth')">
+                    <td><span id=custFullName_@customer.CustomerId>@customer.FullName</span></td>
+                    <td style="padding-left: 10px;"><span id=custDOB_@customer.CustomerId>@customer.DateOfBirth</span></td>
+                </tr>
+            }
+        </table>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Update Customer</h2>
+        <input type="hidden" id="updateCustomerId"/>
+        <table>
+            <tr>
+                <td><strong>First Name:</strong></td>
+                <td style="padding-left: 10px;"><input id="updateCustomerFirstName" type="text" /></td>
+            </tr>
+            <tr>
+                <td><strong>Last Name:</strong></td>
+                <td style="padding-left: 10px;"><input id="updateCustomerLastName" type="text" /></td>
+            </tr>
+            <tr>
+                <td><strong>Date Of Birth:</strong></td>
+                <td style="padding-left: 10px;"><input id="updateCustomerDOB" type="text" /></td>
+            </tr>
+        </table>
+        <br />
+        <p class="btn btn-default" onclick="updateCustomer();">Update</p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Add Customer</h2>
+        <table>
+            <tr>
+                <td><strong>First Name:</strong></td>
+                <td style="padding-left: 10px;"><input id="newCustomerFirstName" type="text"/></td>
+            </tr>
+            <tr>
+                <td><strong>Last Name:</strong></td>
+                <td style="padding-left: 10px;"><input id="newCustomerLastName" type="text"/></td>
+            </tr>
+            <tr>
+                <td><strong>Date Of Birth:</strong></td>
+                <td style="padding-left: 10px;"><input id="newCustomerDOB" type="text"/></td>
+            </tr>
+        </table>
+        <br/>
+        <p class="btn btn-default" onclick="addNewCustomer();">Add</p>
     </div>
 </div>
+

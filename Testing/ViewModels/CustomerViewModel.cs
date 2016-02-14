@@ -5,6 +5,11 @@ namespace Testing.ViewModels
 {
     public class CustomerViewModel 
     {
+        public CustomerViewModel()
+        {
+
+        }
+
         public CustomerViewModel(Customer customer)
         {
             CustomerId = customer.Id;

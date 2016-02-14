@@ -47,7 +47,7 @@ namespace UnitTests.Views
         public void Returns_Hydrated_CustomerViewModel_With_FullName()
         {
             //Arange
-            var customer = CreateSingleCustomer(20);
+            var customer = CustomerCreator.CreateSingleCustomer(20);
 
             //Act
             var viewModel = new CustomerViewModel(customer);
@@ -61,7 +61,7 @@ namespace UnitTests.Views
         public void IsUnderAge_Flag_Set_Correctly(int age)
         {
             //Arange
-            var customer = CreateSingleCustomer(age);
+            var customer = CustomerCreator.CreateSingleCustomer(age);
             var isUnderAge = age < 18;
 
             //Act
@@ -69,17 +69,6 @@ namespace UnitTests.Views
 
             //Assert
             Assert.IsTrue(isUnderAge == viewModel.IsUnderAge);
-        }
-
-        private static Customer CreateSingleCustomer(int age)
-        {
-            return new Customer
-            {
-                DateOfBirth = DateTime.Now.AddYears(-age),
-                FirstName = "Twenty",
-                LastName = "YearsOld",
-                Id = 1
-            };
         }
     }
 }

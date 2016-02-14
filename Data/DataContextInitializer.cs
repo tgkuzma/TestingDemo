@@ -19,7 +19,7 @@ namespace Data
             {
                 FirstName = "Underage",
                 LastName = "Customer",
-                DateOfBirth = Convert.ToDateTime("12/22/2000")
+                DateOfBirth = Convert.ToDateTime("02/14/2000")
             });
 
             context.SaveChanges();

@@ -42,7 +42,7 @@ namespace Business
             _customerRepository.SaveChanges();
         }
 
-        public void UpdateCustomer(Customer customerToUpdate)
+        public void UpdateCustomer()
         {
             _customerRepository.SaveChanges();
         }

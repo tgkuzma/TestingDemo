@@ -11,6 +11,6 @@ namespace Business.Interfaces
         Customer GetCustomerByDateOfBirth(DateTime dateOfBirth);
         void AddNewCustomer(Customer customerToAdd);
         void DeleteCustomer(Customer customerToDelete);
-        void UpdateCustomer(Customer customerToUpdate);
+        void UpdateCustomer();
     }
 }
