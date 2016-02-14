@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Extensions\ClickExtensitons.cs" />
     <Compile Include="HomePageTests.cs" />
+    <Compile Include="HomeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

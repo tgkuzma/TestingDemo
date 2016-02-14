@@ -6,7 +6,7 @@
     }
 
     $.ajax({
-        url: "Home/AddNewCustomer",
+        url: "Testing/Home/AddNewCustomer",
         async: true,
         type: "POST",
         data: JSON.stringify(customerToAdd),
@@ -40,7 +40,7 @@ function updateCustomer() {
     }
 
     $.ajax({
-        url: "Home/UpdateCustomer",
+        url: "Testing/Home/UpdateCustomer",
         async: true,
         type: "POST",
         data: JSON.stringify(customerToUpdate),
