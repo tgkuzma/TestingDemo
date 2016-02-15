@@ -40,7 +40,7 @@ function updateCustomer() {
     }
 
     $.ajax({
-        url: "Testing/Home/UpdateCustomer",
+        url: "Home/UpdateCustomer",
         async: true,
         type: "POST",
         data: JSON.stringify(customerToUpdate),
